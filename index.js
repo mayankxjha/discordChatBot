@@ -48,6 +48,6 @@ client.on('messageCreate', async message => {
         model: 'gpt-3.5-turbo',
         messages: conversationLog
     })
-    message.reply(result.data.choices[0].message.splice(0,2000))
+    message.reply(result.data.choices[0].message)
 })
 client.login(process.env.TOKEN)
