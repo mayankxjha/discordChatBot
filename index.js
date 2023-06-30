@@ -4,6 +4,9 @@ const index = express();
 const {Client, IntentsBitField} = require('discord.js')
 const {Configuration, OpenAIApi} = require('openai')
 
+index.get('/', (req, res)=>{
+    res.send("<h1>It do be working</h1>")
+})
 const client = new Client({
     intents: [
         IntentsBitField.Flags.Guilds,
