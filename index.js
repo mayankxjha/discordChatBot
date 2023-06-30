@@ -1,4 +1,6 @@
 require('dotenv/config')
+const express = require('express')
+const index = express();
 const {Client, IntentsBitField} = require('discord.js')
 const {Configuration, OpenAIApi} = require('openai')
 
@@ -51,3 +53,7 @@ client.on('messageCreate', async message => {
     message.reply(result.data.choices[0].message)
 })
 client.login(process.env.TOKEN)
+
+index.listen(3000, () => {
+    console.log("Server is listening at port 3000");
+});
