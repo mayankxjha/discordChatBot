@@ -1,10 +1,10 @@
 require('dotenv/config')
 const express = require('express')
 const index = express();
-const {Client, IntentsBitField} = require('discord.js')
-const {Configuration, OpenAIApi} = require('openai')
+const { Client, IntentsBitField } = require('discord.js')
+const { Configuration, OpenAIApi } = require('openai')
 
-index.get('/', (req, res)=>{
+index.get('/', (req, res) => {
     res.send("<h1>It do be working</h1>")
 })
 const client = new Client({
@@ -27,20 +27,20 @@ client.on('messageCreate', async message => {
     if (message.channel.id != process.env.CHANNEL_ID) return;
     if (message.content.startsWith('.')) return;
 
-    let conversationLog = [{role: 'system', content: "You are a sarcastic chatbot."}]
+    let conversationLog = [{ role: 'system', content: "You are Cinnamoroll from Sanrio. Respond with kindness, positivity, and enthusiasm. Incorporate emoticons  and uwufying your responses for extra cuteness." }]
 
     await message.channel.sendTyping();
 
-    let prevMessages = await message.channel.messages.fetch({limit: 15})
+    let prevMessages = await message.channel.messages.fetch({ limit: 15 })
     prevMessages.reverse()
 
-    prevMessages.forEach(msg=>{
-        if(message.content.startsWith('.')) return;
-        if(msg.author.id !== client.user.id && message.author.bot) return;
-        if(msg.author.id !== message.author.id) return;
+    prevMessages.forEach(msg => {
+        if (message.content.startsWith('.')) return;
+        if (msg.author.id !== client.user.id && message.author.bot) return;
+        if (msg.author.id !== message.author.id) return;
 
         conversationLog.push({
-            role : 'user',
+            role: 'user',
             content: msg.content
         })
     })
@@ -57,6 +57,6 @@ client.on('messageCreate', async message => {
 })
 client.login(process.env.TOKEN)
 
-index.listen(3000, () => {
-    console.log("Server is listening at port 3000");
+index.listen(6969, () => {
+    console.log("Server is listening at port 6969");
 });
